@@ -1,0 +1,21 @@
+# dsh-opencode-pool — OpenCode Go key pool for DeepSeek Harness
+#
+# 硬约束：credentialRef 必须等于该路由在 llm-pi-ai 里的 apiKeyEnv。
+# 插件只往这个槽位写「当前生效」的 key；真实 key 放在各自的 ref 里
+# （~/.dsh/.credentials.yaml 的 refs 段），不进入本文件。
+#
+# 只需要一把 key 时删掉多余的 keys 条目即可；之后可以在设置页热添加。
+- insert:
+    - id: opencode-pool
+      name: 'dsh-opencode-pool'
+      config:
+        providers:
+          opencode-go:
+            credentialRef: OPENCODE_GO_API_KEY
+            keys:
+              - { id: k1, ref: OPENCODE_GO_KEY_1, label: 主号 }
+              - { id: k2, ref: OPENCODE_GO_KEY_2, label: 备号 }
+            quotaUsage: true          # 显示 OpenCode Go 官方 5h / week / month 用量
+            quotaCooldownMs: 21600000 # 额度耗尽后冷却 6h（上游未给重置时间时）
+            invalidCooldownMs: 3600000
+            maxRetriesPerTurn: 3

@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+*.log
+*.tmp
+*.tgz
+.env
+
+# Local runtime state; real keys never belong in this repository.
+keypool-state.json
+keypool-keys.json

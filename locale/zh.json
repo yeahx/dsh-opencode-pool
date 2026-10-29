@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "OpenCode Key 池",
+    "description": "为 OpenCode Go 提供粘性 Key 池，并在设置页显示官方 5 小时 / 每周 / 每月用量。"
+  }
+}
